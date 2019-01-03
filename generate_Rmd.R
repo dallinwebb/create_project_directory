@@ -1,4 +1,4 @@
-generate_Rmd <- function(member) {
+generate_user_Rmd <- function(member) {
   
   rscript_content <- c(
     "# Use other scripts to explore your data and visualize your data.",
@@ -22,12 +22,16 @@ generate_Rmd <- function(member) {
     "similar to how the following r chunk displays the object from your R scripts.", 
     "",
     "```{r message=FALSE, warning=FALSE}", 
-    'source("example.r")', 
+    'source("data_vis.r")', 
     "my_plot", 
     "```", "", "<br>"
     )
   
-  write_lines(rmd_content,     path = "my_contribution.Rmd")
-  write_lines(rscript_content, path = "data_viz.R")
+  
+  rmd_path <- paste0("personal_directories/", member, "/my_contribution.Rmd")
+  rsc_path <- paste0("personal_directories/", member, "/data_vis.R")
+  
+  write_lines(rmd_content, path = rmd_path)
+  write_lines(rscript_content, path = rsc_path)
   
 }
